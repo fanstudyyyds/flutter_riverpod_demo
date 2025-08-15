@@ -18,4 +18,3 @@ samples, guidance on mobile development, and a full API reference.
 =======
 # flutter_riverpod_demo
 flutter+riverpod+demo
->>>>>>> a0db9640c8ed6704ae42d558b3c7fa9d4978e810
