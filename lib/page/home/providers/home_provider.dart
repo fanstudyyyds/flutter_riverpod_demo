@@ -20,17 +20,17 @@ class HomeEvents {
       case 0:
         print('首页按钮被点击: ${HiveConfig.MY_BOX.get("index")}');
         ref.read(homeIndexProvider.notifier).state = 0;
-        HiveConfig.MY_BOX.put("index", "home");
+        HiveConfig.getInstance(HiveKey.MYBOX).put("index", "home");
         break;
       case 1:
         print('搜索按钮被点击: ${HiveConfig.MY_BOX.get("index")}');
         ref.read(homeIndexProvider.notifier).state = 1;
-        HiveConfig.MY_BOX.put("index", "list");
+        HiveConfig.getInstance(HiveKey.MYBOX).put("index", "list");
         break;
       case 2:
         print('个人中心按钮被点击: ${HiveConfig.MY_BOX.get("index")}');
         ref.read(homeIndexProvider.notifier).state = 2;
-        HiveConfig.MY_BOX.put("index", "my");
+        HiveConfig.getInstance(HiveKey.MYBOX).put("index", "my");
         break;
     }
   }
