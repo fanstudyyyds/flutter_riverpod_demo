@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:untitled3/hive/hive_config.dart';
 import 'package:untitled3/page/index/modes/Index_mode.dart';
 import 'package:untitled3/page/index/providers/index_providers.dart';
 import 'package:untitled3/page/index/api/index_api.dart';
@@ -12,6 +13,7 @@ class IndexPage extends ConsumerWidget {
     //
     final homeIndex = ref.watch(homeIndexProvider);
     final indexMode = ref.watch(indexModeProvider);
+    HiveConfig.MY_BOX.put("key", "value");
 
     return SingleChildScrollView(
         child: Column(
