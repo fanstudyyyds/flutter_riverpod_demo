@@ -13,7 +13,6 @@ class IndexPage extends ConsumerWidget {
     //
     final homeIndex = ref.watch(homeIndexProvider);
     final indexMode = ref.watch(indexModeProvider);
-    HiveConfig.MY_BOX.put("key", "value");
 
     return SingleChildScrollView(
         child: Column(

@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:untitled3/hive/hive_config.dart';
+
 final clickCountProvider = StateProvider<int>((ref) => 0);
 
 final homeIndexProvider = StateProvider<int>((ref) => 0);
@@ -16,16 +18,19 @@ class HomeEvents {
     // 这里可以根据不同的索引执行不同的操作
     switch (index) {
       case 0:
-        print('首页按钮被点击');
+        print('首页按钮被点击: ${HiveConfig.MY_BOX.get("index")}');
         ref.read(homeIndexProvider.notifier).state = 0;
+        HiveConfig.MY_BOX.put("index", "home");
         break;
       case 1:
-        print('搜索按钮被点击');
+        print('搜索按钮被点击: ${HiveConfig.MY_BOX.get("index")}');
         ref.read(homeIndexProvider.notifier).state = 1;
+        HiveConfig.MY_BOX.put("index", "list");
         break;
       case 2:
-        print('个人中心按钮被点击');
+        print('个人中心按钮被点击: ${HiveConfig.MY_BOX.get("index")}');
         ref.read(homeIndexProvider.notifier).state = 2;
+        HiveConfig.MY_BOX.put("index", "my");
         break;
     }
   }
