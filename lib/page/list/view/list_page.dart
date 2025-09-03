@@ -72,6 +72,7 @@ class ListPage extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Spacer(flex: 1),
           // 圆形计时按钮
           GestureDetector(
             onTap: () {
@@ -126,8 +127,9 @@ class ListPage extends ConsumerWidget {
               color: Colors.grey,
             ),
           ),
+          const Spacer(flex: 1),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -135,12 +137,12 @@ class ListPage extends ConsumerWidget {
                   // 历史记录按钮
                   onPressed: () => () {},
                   icon: const Icon(Icons.history, size: 18),
-                  label: const Text('历史记录'),
+                  label: const Text('统计'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey[50],
                     foregroundColor: Colors.blueGrey[700],
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     padding: const EdgeInsets.symmetric(
@@ -150,12 +152,12 @@ class ListPage extends ConsumerWidget {
                 ElevatedButton.icon(
                   onPressed: () => () {},
                   icon: const Icon(Icons.bar_chart, size: 18),
-                  label: const Text('统计'),
+                  label: const Text('历史记录'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey[50],
                     foregroundColor: Colors.blueGrey[700],
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     padding: const EdgeInsets.symmetric(
@@ -164,7 +166,14 @@ class ListPage extends ConsumerWidget {
                 )
               ],
             ),
-          )
+          ),
+          TextButton(
+            onPressed: () async {},
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.grey, // 设置文字颜色
+            ),
+            child: Text('计时器'),
+          ),
         ],
       ),
     );

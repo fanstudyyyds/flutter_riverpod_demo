@@ -1,0 +1,15 @@
+{
+  "title": "国际化示例",
+  "helloWorld": "你好，世界！",
+  "welcome": "欢迎，{name}",
+  "date": "当前日期：{date}",
+  "@date": {
+    "description": "带有日期参数的当前日期消息",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMM"
+      }
+    }
+  }
+}

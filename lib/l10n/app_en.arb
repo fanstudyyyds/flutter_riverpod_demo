@@ -1,0 +1,15 @@
+{
+  "title": "Internationalization Demo",
+  "helloWorld": "Hello, World!",
+  "welcome": "Welcome, {name}",
+  "date": "Current date: {date}",
+  "@date": {
+    "description": "Current date message with date parameter",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMM"
+      }
+    }
+  }
+}

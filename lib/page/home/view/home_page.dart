@@ -5,6 +5,11 @@ import 'package:untitled3/page/index/view/index_page.dart';
 import 'package:untitled3/page/list/view/list_page.dart';
 import 'package:untitled3/page/my/view/my_page.dart';
 import 'package:untitled3/routers/app_pages.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+// 当前语言状态管理
+final localeProvider = StateProvider<Locale>((ref) => const Locale('en', 'US'));
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -15,7 +20,12 @@ class HomePage extends ConsumerWidget {
     final clickCount = ref.watch(clickCountProvider);
     final homeIndex = ref.watch(homeIndexProvider);
     final homeEvents = ref.watch(homeEventProvider);
+    final locale = ref.watch(localeProvider);
+
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: locale,
       home: Scaffold(
           appBar: AppBar(title: const Text('首页')),
           body: IndexedStack(
