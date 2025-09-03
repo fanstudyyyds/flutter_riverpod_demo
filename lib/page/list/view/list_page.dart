@@ -17,6 +17,14 @@ class ListPage extends ConsumerWidget {
   void _toggleTimer(WidgetRef ref) {
     final isRunning = ref.watch(isRunningProvider);
     final remainingTime = ref.watch(remainingTimeProvider);
+
+    // / 按钮点击动画
+    final buttonScale = ref.read(buttonScaleProvider.notifier);
+    buttonScale.state = 0.9;
+    Future.delayed(const Duration(milliseconds: 100), () {
+      buttonScale.state = 1.0;
+    });
+
     if (isRunning) {
       _stopTimer(ref);
     } else {
@@ -57,9 +65,8 @@ class ListPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //
     final isRunning = ref.watch(isRunningProvider);
-
-    int totalTime = 25 * 60;
     final remainingTime = ref.watch(remainingTimeProvider);
+    final buttonScale = ref.watch(buttonScaleProvider);
 
     return Center(
       child: Column(
@@ -70,28 +77,32 @@ class ListPage extends ConsumerWidget {
             onTap: () {
               _toggleTimer(ref);
             },
-            child: Container(
-              width: 180,
-              height: 180,
-              decoration: BoxDecoration(
-                color: isRunning ? Colors.red : Colors.green,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    spreadRadius: 2,
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  isRunning ? '结束' : '开始',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
+            child: AnimatedScale(
+              scale: buttonScale,
+              duration: const Duration(milliseconds: 100),
+              child: Container(
+                width: 180,
+                height: 180,
+                decoration: BoxDecoration(
+                  color: isRunning ? Colors.red : Colors.green,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    isRunning ? '结束' : '开始',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -115,6 +126,45 @@ class ListPage extends ConsumerWidget {
               color: Colors.grey,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton.icon(
+                  // 历史记录按钮
+                  onPressed: () => () {},
+                  icon: const Icon(Icons.history, size: 18),
+                  label: const Text('历史记录'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey[50],
+                    foregroundColor: Colors.blueGrey[700],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 2,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                  ),
+                ),
+                ElevatedButton.icon(
+                  onPressed: () => () {},
+                  icon: const Icon(Icons.bar_chart, size: 18),
+                  label: const Text('统计'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey[50],
+                    foregroundColor: Colors.blueGrey[700],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 2,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
