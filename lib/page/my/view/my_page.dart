@@ -32,11 +32,9 @@ class MyPage extends ConsumerWidget {
               onPressed: () {
                 print(strings().localeName);
                 if (strings().localeName == "zh") {
-                  ref.read(localeProvider.notifier).state =
-                      const Locale('en', 'US');
+                  ref.read(localeProvider.notifier).state = en;
                 } else {
-                  ref.read(localeProvider.notifier).state =
-                      const Locale('zh', 'CN');
+                  ref.read(localeProvider.notifier).state = zh;
                 }
               },
               icon: const Icon(Icons.bar_chart, size: 18),

@@ -9,7 +9,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // 当前语言状态管理
-final localeProvider = StateProvider<Locale>((ref) => const Locale('en', 'US'));
+const en = const Locale('en', 'US');
+const zh = const Locale('zh', 'CN');
+final localeProvider = StateProvider<Locale>((ref) => en);
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
