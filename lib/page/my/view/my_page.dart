@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:untitled3/page/chat/view/chat_page.dart';
 import 'package:untitled3/page/home/providers/home_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:untitled3/page/home/view/home_page.dart';
@@ -49,6 +50,15 @@ class MyPage extends ConsumerWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               ),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ChatPage()),
+                );
+              },
+              label: const Text('聊天窗口'),
             )
           ],
         ),
